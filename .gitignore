@@ -1,0 +1,40 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.pyo
+*.pyd
+*.log
+*.pot
+*.pyc
+*.db
+
+# VSCode settings
+.vscode/
+
+# Virtualenvs
+.env
+.venv
+ENV/
+env/
+venv/
+.poetry/
+
+# Django migrations (optional)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+
+# Django static/media files
+staticfiles/
+media/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
