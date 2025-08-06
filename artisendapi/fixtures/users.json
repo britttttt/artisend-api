@@ -3,8 +3,8 @@
         "model": "auth.user",
         "pk":1,
         "fields":{
-            "email":"",
-            "password":"",
+            "email":"brit@brit.com",
+            "password":"brit",
             "avatar":"",
             "isBusiness": true,
             "isAdmin":true

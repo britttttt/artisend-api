@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from artisendapi.models import ArtisendUser
+from artisendapi.models.ArtisendUser import ArtisendUser
 
 
 
@@ -28,6 +28,25 @@ def login_user(request):
 
     return JsonResponse({"valid": False}, status=401)
 
+import requests
+
+def geocode_postal_code(postal_code):
+    url = "https://nominatim.openstreetmap.org/search"
+    params = {
+        "postalcode": postal_code,
+        "countrycodes": "us",  # change as needed
+        "format": "json",
+        "limit": 1
+    }
+    headers = {
+        "User-Agent": "artisendapi/1.0 (your_email@example.com)"
+    }
+    response = requests.get(url, params=params, headers=headers)
+    if response.status_code == 200 and response.json():
+        result = response.json()[0]
+        return float(result["lat"]), float(result["lon"])
+    return None, None
+
 
 @csrf_exempt
 def register_user(request):
@@ -36,13 +55,12 @@ def register_user(request):
 
     try:
         req_body = json.loads(request.body.decode())
-        username = req_body['username']
         email = req_body['email']
-        password = req_body['password']
         first_name = req_body.get('first_name', '')
         last_name = req_body.get('last_name', '')
-        phone_number = req_body.get('phone_number', '')
-        address = req_body.get('address', '')
+        username = req_body['username']
+        password = req_body['password']
+        postal_code = req_body.get('postal_code', '') 
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({"error": "Invalid JSON or missing required fields"}, status=400)
 
@@ -57,10 +75,14 @@ def register_user(request):
         last_name=last_name,
     )
 
+    lat, lng = geocode_postal_code(postal_code)
+
     artisend_user = ArtisendUser.objects.create(
         user=new_user,
-        phone_number=phone_number,
-        address=address
+        email=email,
+        postal_code=postal_code,
+        latitude=lat,
+        longitude=lng
     )
 
     token = Token.objects.create(user=new_user)

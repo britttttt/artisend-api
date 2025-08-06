@@ -6,4 +6,3 @@ python manage.py makemigrations artisendapi
 python manage.py migrate
 python manage.py loaddata users
 python manage.py loaddata tokens
-p

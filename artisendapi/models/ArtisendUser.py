@@ -6,7 +6,9 @@ class ArtisendUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=55)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
-
+    postal_code = models.CharField(max_length=10, null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     @property
     def recommends(self):
