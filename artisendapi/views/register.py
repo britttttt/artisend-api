@@ -1,11 +1,10 @@
 import json
-from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import status
+from django.http import JsonResponse, HttpResponseNotAllowed
+from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from artisendapi.models.ArtisendUser import ArtisendUser
+from artisendapi.models import ArtisendUser
+from artisendapi.utils.geolocation import geocode_postal_code
 
 
 
@@ -54,36 +53,45 @@ def register_user(request):
         return HttpResponseNotAllowed(['POST'])
 
     try:
-        req_body = json.loads(request.body.decode())
-        email = req_body['email']
-        first_name = req_body.get('first_name', '')
-        last_name = req_body.get('last_name', '')
-        username = req_body['username']
-        password = req_body['password']
-        postal_code = req_body.get('postal_code', '') 
-    except (json.JSONDecodeError, KeyError):
-        return JsonResponse({"error": "Invalid JSON or missing required fields"}, status=400)
+        # Extract from form fields
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        email = request.POST.get('email')
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
+        postal_code = request.POST.get('postal_code', '')
+        avatar = request.FILES.get('avatar')  # File upload
 
-    if User.objects.filter(username=username).exists():
-        return JsonResponse({"error": "Username already exists"}, status=400)
+        if not username or not password or not email:
+            return JsonResponse({"error": "Missing required fields"}, status=400)
 
-    new_user = User.objects.create_user(
-        username=username,
-        email=email,
-        password=password,
-        first_name=first_name,
-        last_name=last_name,
-    )
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({"error": "Username already exists"}, status=400)
 
-    lat, lng = geocode_postal_code(postal_code)
+        # Create user
+        new_user = User.objects.create_user(
+            username=username,
+            password=password,
+            email=email,
+            first_name=first_name,
+            last_name=last_name
+        )
 
-    artisend_user = ArtisendUser.objects.create(
-        user=new_user,
-        email=email,
-        postal_code=postal_code,
-        latitude=lat,
-        longitude=lng
-    )
+        # Geocode
+        latitude, longitude = geocode_postal_code(postal_code)
 
-    token = Token.objects.create(user=new_user)
-    return JsonResponse({"token": token.key, "id": new_user.id}, status=status.HTTP_201_CREATED)
+        # Create ArtisendUser
+        ArtisendUser.objects.create(
+            user=new_user,
+            email=email,
+            postal_code=postal_code,
+            latitude=latitude,
+            longitude=longitude,
+            avatar=avatar
+        )
+
+        token = Token.objects.create(user=new_user)
+        return JsonResponse({"token": token.key, "id": new_user.id}, status=201)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
