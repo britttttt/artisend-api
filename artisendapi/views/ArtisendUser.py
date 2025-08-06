@@ -1,25 +1,23 @@
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework import serializers
-from rest_framework import status
-from models import ArtisendUser
+from rest_framework import serializers, status
+from artisendapi.models import ArtisendUser
 from django.core.exceptions import ObjectDoesNotExist
 
 
 class ArtisendUserSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for Artisend users"""
+    url = serializers.HyperlinkedIdentityField(
+        view_name='customer', lookup_field='id'
+    )
+
     class Meta:
         model = ArtisendUser
-        url = serializers.HyperlinkedIdentityField(
-            view_name='customer', lookup_field='id'
-        )
         fields = ('id', 'url', 'user')
         depth = 1
 
 
 class Customers(ViewSet):
-
     def update(self, request, pk=None):
         """
         @api {PUT} /customers/:id PUT changes to customer profile
@@ -36,13 +34,17 @@ class Customers(ViewSet):
         """
         try:
             artisend_user = ArtisendUser.objects.get(user=request.auth.user)
+
             artisend_user.user.last_name = request.data["last_name"]
             artisend_user.user.email = request.data["email"]
             artisend_user.address = request.data["address"]
             artisend_user.phone_number = request.data["phone_number"]
+
             artisend_user.user.save()
             artisend_user.save()
-            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
         except ObjectDoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:

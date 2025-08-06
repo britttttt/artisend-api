@@ -1,0 +1,52 @@
+.
+├── README.md
+├── __init__.py
+├── artisendapi
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── settings.cpython-312.pyc
+│   │   ├── urls.cpython-312.pyc
+│   │   └── wsgi.cpython-312.pyc
+│   ├── admin.py
+│   ├── apps.py
+│   ├── asgi.py
+│   ├── fixtures
+│   │   ├── posts.json
+│   │   ├── userBusinesses.json
+│   │   └── users.json
+│   ├── models
+│   │   ├── ArtisendUser.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   └── __init__.cpython-312.pyc
+│   │   ├── category.py
+│   │   ├── medium.py
+│   │   ├── post.py
+│   │   ├── profile.py
+│   │   ├── skill.py
+│   │   ├── user-medium.py
+│   │   └── user-skill.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views
+│   │   ├── ArtisendUser.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── register.cpython-312.pyc
+│   │   ├── profile.py
+│   │   ├── register.py
+│   │   └── user.py
+│   └── wsgi.py
+├── db.sqlite3
+├── manage.py
+├── migrations
+│   └── __init__.py
+├── poetry.lock
+├── pyproject.toml
+├── seed_data.sh
+├── structure.txt
+└── tests.py
+
+9 directories, 41 files
