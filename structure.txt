@@ -5,6 +5,8 @@
 │   ├── __init__.py
 │   ├── __pycache__
 │   │   ├── __init__.cpython-312.pyc
+│   │   ├── admin.cpython-312.pyc
+│   │   ├── apps.cpython-312.pyc
 │   │   ├── settings.cpython-312.pyc
 │   │   ├── urls.cpython-312.pyc
 │   │   └── wsgi.cpython-312.pyc
@@ -15,38 +17,58 @@
 │   │   ├── posts.json
 │   │   ├── userBusinesses.json
 │   │   └── users.json
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
 │   ├── models
 │   │   ├── ArtisendUser.py
 │   │   ├── __init__.py
 │   │   ├── __pycache__
-│   │   │   └── __init__.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── user_business.cpython-312.pyc
+│   │   │   └── user_profile.cpython-312.pyc
+│   │   ├── business.py
 │   │   ├── category.py
-│   │   ├── medium.py
 │   │   ├── post.py
-│   │   ├── profile.py
-│   │   ├── skill.py
-│   │   ├── user-medium.py
-│   │   └── user-skill.py
+│   │   ├── user_business.py
+│   │   ├── user_medium.py
+│   │   ├── user_profile.py
+│   │   └── user_skill.py
 │   ├── settings.py
 │   ├── urls.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── geolocation.cpython-312.pyc
+│   │   └── geolocation.py
 │   ├── views
 │   │   ├── ArtisendUser.py
 │   │   ├── __init__.py
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
 │   │   │   └── register.cpython-312.pyc
+│   │   ├── business.py
 │   │   ├── profile.py
 │   │   ├── register.py
 │   │   └── user.py
 │   └── wsgi.py
 ├── db.sqlite3
 ├── manage.py
-├── migrations
-│   └── __init__.py
+├── media
+│   ├── avatars
+│   │   ├── 20231007_133252.jpg
+│   │   ├── IMG_0199.jpg
+│   │   └── Pedro_Pascal_Film-1182385711.jpg
+│   └── profiles
+│       └── IMG_0210.jpg
 ├── poetry.lock
 ├── pyproject.toml
 ├── seed_data.sh
 ├── structure.txt
 └── tests.py
 
-9 directories, 41 files
+15 directories, 57 files

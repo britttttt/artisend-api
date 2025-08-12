@@ -1,0 +1,65 @@
+[
+  {
+    "model": "artisendapi.medium",
+    "pk": 1,
+    "fields": {
+      "label": "Wood"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 2,
+    "fields": {
+      "label": "Metal"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 3,
+    "fields": {
+      "label": "Clay"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 4,
+    "fields": {
+      "label": "Glass"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 5,
+    "fields": {
+      "label": "Painting/Drawing"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 6,
+    "fields": {
+      "label": "Design"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 7,
+    "fields": {
+      "label": "Fibers"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 8,
+    "fields": {
+      "label": "Music"
+    }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 9,
+    "fields": {
+      "label": "Writing"
+    }
+  }
+]
