@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from .user_medium import Medium
 
 class Skill(models.Model):
-    label = models.CharField(max_length=100, unique=True)
-    medium = models.ForeignKey(Medium, on_delete=models.CASCADE)
+    label = models.CharField(max_length=100)
+    medium = models.ForeignKey(Medium, on_delete=models.CASCADE, related_name="skills")
 
     class Meta:
         ordering = ['label']

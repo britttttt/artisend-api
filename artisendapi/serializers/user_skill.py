@@ -4,4 +4,4 @@ from artisendapi.models import Skill
 class UserSkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = ['id','businessId','skill']
+        fields = ['id','business','skill']
