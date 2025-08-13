@@ -7,7 +7,7 @@ class UserBusiness(models.Model):
     business_email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
     business_address = models.CharField(max_length=255, blank=True)
-    social_link = models.URLField(blank=True)
+    social_link = models.CharField(max_length=200, blank=True)
     commissions_open = models.BooleanField(default=False)
     banner_img = models.ImageField(upload_to='banners/', null=True, blank=True)
 

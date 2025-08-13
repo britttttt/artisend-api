@@ -1,15 +1,17 @@
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-from artisendapi.models import UserBusiness
-from artisendapi.serializers import UserBusinessSerializer
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from .models import UserBusiness
+from .serializers import UserBusinessSerializer
 
 class UserBusinessViewSet(viewsets.ModelViewSet):
+    queryset = UserBusiness.objects.all()
     serializer_class = UserBusinessSerializer
-    permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        # Only return the business for the current user
-        return UserBusiness.objects.filter(user=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        return Response(
+            {"success": True, "id": instance.id},
+            status=status.HTTP_201_CREATED
+        )
