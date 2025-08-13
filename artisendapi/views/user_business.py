@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from .models import UserBusiness
-from .serializers import UserBusinessSerializer
+from artisendapi.models import UserBusiness
+from artisendapi.serializers import UserBusinessSerializer
 
 class UserBusinessViewSet(viewsets.ModelViewSet):
     queryset = UserBusiness.objects.all()
@@ -10,7 +10,7 @@ class UserBusinessViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        instance = serializer.save()
+        instance = serializer.save(user=request.user)
         return Response(
             {"success": True, "id": instance.id},
             status=status.HTTP_201_CREATED

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class UserBusiness(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userbusiness")
+    display_name = models.CharField(max_length=255)
     bio = models.TextField(blank=True)
     business_email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
