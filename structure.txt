@@ -14,7 +14,9 @@
 │   ├── apps.py
 │   ├── asgi.py
 │   ├── fixtures
+│   │   ├── mediums.json
 │   │   ├── posts.json
+│   │   ├── skills.json
 │   │   ├── userBusinesses.json
 │   │   └── users.json
 │   ├── migrations
@@ -28,14 +30,30 @@
 │   │   ├── __init__.py
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── profile.cpython-312.pyc
 │   │   │   ├── user_business.cpython-312.pyc
-│   │   │   └── user_profile.cpython-312.pyc
-│   │   ├── business.py
+│   │   │   ├── user_medium.cpython-312.pyc
+│   │   │   ├── user_profile.cpython-312.pyc
+│   │   │   └── user_skill.cpython-312.pyc
 │   │   ├── category.py
 │   │   ├── post.py
+│   │   ├── profile.py
 │   │   ├── user_business.py
 │   │   ├── user_medium.py
 │   │   ├── user_profile.py
+│   │   └── user_skill.py
+│   ├── serializers
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── medium.cpython-312.pyc
+│   │   │   ├── skill.cpython-312.pyc
+│   │   │   ├── user_medium.cpython-312.pyc
+│   │   │   └── user_skill.cpython-312.pyc
+│   │   ├── medium.py
+│   │   ├── skill.py
+│   │   ├── user_business.py
+│   │   ├── user_medium.py
 │   │   └── user_skill.py
 │   ├── settings.py
 │   ├── urls.py
@@ -50,11 +68,17 @@
 │   │   ├── __init__.py
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
-│   │   │   └── register.cpython-312.pyc
-│   │   ├── business.py
+│   │   │   ├── profile.cpython-312.pyc
+│   │   │   ├── register.cpython-312.pyc
+│   │   │   ├── user_business.cpython-312.pyc
+│   │   │   ├── user_medium.cpython-312.pyc
+│   │   │   └── user_skill.cpython-312.pyc
 │   │   ├── profile.py
 │   │   ├── register.py
-│   │   └── user.py
+│   │   ├── user.py
+│   │   ├── user_business.py
+│   │   ├── user_medium.py
+│   │   └── user_skill.py
 │   └── wsgi.py
 ├── db.sqlite3
 ├── manage.py
@@ -64,6 +88,10 @@
 │   │   ├── IMG_0199.jpg
 │   │   └── Pedro_Pascal_Film-1182385711.jpg
 │   └── profiles
+│       ├── 20220820_111215.jpg
+│       ├── 20230916_104746.jpg
+│       ├── 20230916_104746_mAXAQpz.jpg
+│       ├── 20231104_120746.jpg
 │       └── IMG_0210.jpg
 ├── poetry.lock
 ├── pyproject.toml
@@ -71,4 +99,4 @@
 ├── structure.txt
 └── tests.py
 
-15 directories, 57 files
+17 directories, 83 files

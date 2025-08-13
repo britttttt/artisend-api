@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from artisendapi.models import Medium
+from artisendapi.models import UserMedium, Medium
 
 class UserMediumSerializer(serializers.ModelSerializer):
+    medium = serializers.SlugRelatedField(slug_field='label', queryset=Medium.objects.all())
+
     class Meta:
-        model = Medium
-        fields = ['id', 'business', 'medium']
+        model = UserMedium
+        fields = ['id', 'medium']

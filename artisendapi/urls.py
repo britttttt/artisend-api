@@ -7,6 +7,7 @@ from artisendapi.views import register_user, login_user
 from artisendapi.views.user_business import UserBusinessViewSet
 from artisendapi.views.user_medium import UserMediumViewSet, MediumViewSet
 from artisendapi.views.user_skill import UserSkillViewSet, SkillViewSet
+from artisendapi.views.business_profile import BusinessProfileViewSet  # Updated import
 
 # pylint: disable=invalid-name
 router = routers.DefaultRouter(trailing_slash=False)
@@ -16,9 +17,9 @@ router.register(r'usermedium', UserMediumViewSet, basename='usermedium')
 router.register(r'medium', MediumViewSet, basename='medium')
 router.register(r'userskill', UserSkillViewSet, basename='userskill')
 router.register(r'skill', SkillViewSet, basename='skill')
+router.register(r'businessprofile', BusinessProfileViewSet, basename='businessprofile')  # Updated
 
 # Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path("", include(router.urls)),
     path("register", register_user),

@@ -24,7 +24,7 @@
   {"model": "artisendapi.skill", "pk": 23, "fields": {"medium": 6, "label": "Animation"}},
   {"model": "artisendapi.skill", "pk": 24, "fields": {"medium": 7, "label": "Weaving"}},
   {"model": "artisendapi.skill", "pk": 25, "fields": {"medium": 7, "label": "Needlefelting"}},
-  {"model": "artisendapi.skill", "pk": 26, "fields": {"medium": 7, "label": "Embroery"}},
+  {"model": "artisendapi.skill", "pk": 26, "fields": {"medium": 7, "label": "Embroidery"}},
   {"model": "artisendapi.skill", "pk": 27, "fields": {"medium": 7, "label": "Sewing"}},
   {"model": "artisendapi.skill", "pk": 28, "fields": {"medium": 7, "label": "Crochet"}},
   {"model": "artisendapi.skill", "pk": 29, "fields": {"medium": 7, "label": "Knitting"}},
