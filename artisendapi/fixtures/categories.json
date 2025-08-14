@@ -1,0 +1,30 @@
+[
+  {
+    "model": "artisendapi.category",
+    "pk": 1,
+    "fields": {
+      "label": "Share My Work"
+    }
+  },
+  {
+    "model": "artisendapi.category",
+    "pk": 2,
+    "fields": {
+      "label": "Feedback Request"
+    }
+  },
+  {
+    "model": "artisendapi.category",
+    "pk": 3,
+    "fields": {
+      "label": "Event"
+    }
+  },
+  {
+    "model": "artisendapi.category",
+    "pk": 4,
+    "fields": {
+      "label": "Tutorial"
+    }
+  }
+]
