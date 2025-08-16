@@ -1,33 +1,23 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class Post(models.Model):
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, default="Untitled")
     content = models.TextField()
-    latitude = models.FloatField(null=True, blank=True)
-    longitude = models.FloatField(null=True, blank=True)
+    category = models.ForeignKey(
+        'Category', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
+        related_name='posts'
+    )
+    photo = models.ImageField(upload_to='post_photos/', null=True, blank=True)
+    postal_code = models.CharField(max_length=20, blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-from math import radians, cos, sin, asin, sqrt
-from artisendapi.models import Post
-
-def get_nearby_posts(user, radius_km=25):
-    def haversine(lat1, lon1, lat2, lon2):
-        R = 6371.0  # Earth radius in km
-        dlat = radians(lat2 - lat1)
-        dlon = radians(lon2 - lon1)
-        a = sin(dlat / 2)**2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2)**2
-        c = 2 * asin(sqrt(a))
-        return R * c
-
-    user_lat = getattr(user, "latitude", None)
-    user_lon = getattr(user, "longitude", None)
-
-    if user_lat is None or user_lon is None:
-        return Post.objects.none()
-
-    posts = Post.objects.exclude(latitude__isnull=True, longitude__isnull=True)
-    nearby_posts = [
-        post for post in posts
-        if haversine(user_lat, user_lon, post.latitude, post.longitude) <= radius_km
-    ]
-    return nearby_posts
+    def __str__(self):
+        return self.title

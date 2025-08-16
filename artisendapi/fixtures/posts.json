@@ -1,0 +1,41 @@
+[
+  {
+    "model": "artisendapi.post",
+    "pk": 1,
+    "fields": {
+      "title": "First Post",
+      "content": "This is the content of the first post.",
+      "category": 1,
+      "postal_code": "38571",
+      "photo": "post_photos/first_post.jpg",
+      "created_at": "2025-08-14T12:00:00Z",
+       "updated_at": "2025-08-14T12:00:00Z"
+    }
+  },
+  {
+    "model": "artisendapi.post",
+    "pk": 2,
+    "fields": {
+      "title": "Second Post",
+      "content": "Some interesting content for the second post.",
+      "category": 1,
+      "postal_code": "38571",
+      "photo": "post_photos/second_post.jpg",
+      "created_at": "2025-08-14T12:00:00Z",
+       "updated_at": "2025-08-14T12:00:00Z"
+    }
+  },
+  {
+    "model": "artisendapi.post",
+    "pk": 3,
+    "fields": {
+      "title": "Third Post",
+      "content": "Here goes the third post content.",
+      "category": 1,
+      "postal_code": "38571",
+      "photo": "post_photos/third_post.jpg",
+      "created_at": "2025-08-14T12:00:00Z",
+       "updated_at": "2025-08-14T12:00:00Z"
+    }
+  }
+]
