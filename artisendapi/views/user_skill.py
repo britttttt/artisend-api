@@ -15,7 +15,12 @@ class UserSkillViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return UserSkill.objects.filter(business__user=self.request.user)
-
+        queryset = UserSkill.objects.filter(business__user=self.request.user)
+        user_id = self.request.query_params.get('user', None)
+        if user_id:
+            queryset = UserSkill.objects.filter(business__user__id=user_id)
+        return queryset
+   
     def perform_create(self, serializer):
-        serializer.save()
+        business = self.request.user.userbusiness  
+        serializer.save(business=business)
