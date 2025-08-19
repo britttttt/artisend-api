@@ -14,6 +14,7 @@
 │   ├── apps.py
 │   ├── asgi.py
 │   ├── fixtures
+│   │   ├── categories.json
 │   │   ├── mediums.json
 │   │   ├── posts.json
 │   │   ├── skills.json
@@ -21,16 +22,15 @@
 │   │   └── users.json
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   ├── 0002_post.py
 │   │   ├── __init__.py
 │   │   └── __pycache__
 │   │       ├── 0001_initial.cpython-312.pyc
-│   │       ├── 0002_post.cpython-312.pyc
 │   │       └── __init__.cpython-312.pyc
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── category.cpython-312.pyc
 │   │   │   ├── post.cpython-312.pyc
 │   │   │   ├── profile.cpython-312.pyc
 │   │   │   ├── user_business.cpython-312.pyc
@@ -39,6 +39,7 @@
 │   │   │   └── user_skill.cpython-312.pyc
 │   │   ├── category.py
 │   │   ├── post.py
+│   │   ├── post_media.py
 │   │   ├── user_business.py
 │   │   ├── user_medium.py
 │   │   ├── user_profile.py
@@ -47,12 +48,15 @@
 │   │   ├── __init__.py
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── category.cpython-312.pyc
 │   │   │   ├── medium.cpython-312.pyc
 │   │   │   ├── post.cpython-312.pyc
+│   │   │   ├── profile.cpython-312.pyc
 │   │   │   ├── skill.cpython-312.pyc
 │   │   │   ├── user_business.cpython-312.pyc
 │   │   │   ├── user_medium.cpython-312.pyc
 │   │   │   └── user_skill.cpython-312.pyc
+│   │   ├── category.py
 │   │   ├── medium.py
 │   │   ├── post.py
 │   │   ├── profile.py
@@ -76,13 +80,16 @@
 │   │   ├── __pycache__
 │   │   │   ├── __init__.cpython-312.pyc
 │   │   │   ├── business_profile.cpython-312.pyc
+│   │   │   ├── category.cpython-312.pyc
 │   │   │   ├── post.cpython-312.pyc
 │   │   │   ├── profile.cpython-312.pyc
 │   │   │   ├── register.cpython-312.pyc
+│   │   │   ├── user.cpython-312.pyc
 │   │   │   ├── user_business.cpython-312.pyc
 │   │   │   ├── user_medium.cpython-312.pyc
 │   │   │   └── user_skill.cpython-312.pyc
 │   │   ├── business_profile.py
+│   │   ├── category.py
 │   │   ├── post.py
 │   │   ├── register.py
 │   │   ├── user.py
@@ -95,23 +102,56 @@
 ├── media
 │   ├── avatars
 │   │   ├── 20231007_133252.jpg
-│   │   ├── IMG_0199.jpg
-│   │   └── Pedro_Pascal_Film-1182385711.jpg
+│   │   └── IMG_0199.jpg
+│   ├── banners
+│   │   ├── 20220113_170954.jpg
+│   │   ├── 20220131_203051.jpg
+│   │   ├── 20220429_220642.jpg
+│   │   ├── National_Park_Capstone_header.png
+│   │   └── Untitled_Artwork4.png
+│   ├── post_photos
+│   │   ├── 20210818_175611.jpg
+│   │   ├── 20211231_222603.jpg
+│   │   ├── 20220103_075043.jpg
+│   │   ├── 20220131_203051.jpg
+│   │   ├── 20220710_080844.jpg
+│   │   ├── 20221026_174453.jpg
+│   │   ├── 20221027_081548.jpg
+│   │   ├── 20240930_194846.jpg
+│   │   ├── 20241011_100139.jpg
+│   │   ├── first_post.jpg
+│   │   ├── second_post.jpg
+│   │   └── third_post.jpg
 │   └── profiles
+│       ├── 20211231_222603.jpg
+│       ├── 20211231_222603_2SZmkcu.jpg
+│       ├── 20211231_222603_p1XdZfi.jpg
+│       ├── 20220710_074314.jpg
+│       ├── 20220710_074633.jpg
 │       ├── 20220820_111215.jpg
 │       ├── 20221026_174453.jpg
+│       ├── 20221026_174453_SqI0PX8.jpg
 │       ├── 20221027_081548.jpg
 │       ├── 20221027_081548_7WFImV2.jpg
+│       ├── 20221027_081548_jCY0vcZ.jpg
+│       ├── 20221027_081548_tsxa7yU.jpg
 │       ├── 20230916_104746.jpg
 │       ├── 20230916_104746_mAXAQpz.jpg
 │       ├── 20231104_120746.jpg
 │       ├── 4b487d40edcb2c597ec9db18537c117e.jpg
+│       ├── 4b487d40edcb2c597ec9db18537c117e_jYpjMRU.jpg
 │       ├── IMG_0210.jpg
-│       └── IMG_5057.jpg
+│       ├── IMG_5057.jpg
+│       ├── Screenshot_20231128_085623.jpg
+│       ├── daybreaker_shield.png
+│       ├── e3b.jpg
+│       ├── funusualThreads_2.png
+│       ├── tumblr_n47kwtdBMI1qa9yvvo1_500.jpg
+│       └── unravelin.png
 ├── poetry.lock
 ├── pyproject.toml
 ├── seed_data.sh
 ├── structure.txt
 └── tests.py
 
-17 directories, 98 files
+19 directories, 136 files

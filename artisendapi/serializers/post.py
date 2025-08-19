@@ -10,7 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = [
             "id", "title", "content", "category", "photo",
-            "postal_code", "latitude", "longitude", "user", "user_business", "user_profile"  
+            "postal_code", "latitude", "longitude","created_at","updated_at", "user", "user_business", "user_profile"  
         ]
         read_only_fields = ("latitude", "longitude", "user_business", "user_profile")
 
