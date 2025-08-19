@@ -1,30 +1,17 @@
 from rest_framework import serializers
 from artisendapi.models import Post
+from .user_business import UserBusinessSerializer
+from .profile import ProfileSerializer
 
 class PostSerializer(serializers.ModelSerializer):
-    display_name = serializers.SerializerMethodField()
-    profile_image = serializers.SerializerMethodField()  # <-- new field
-
+    user_profile = ProfileSerializer(source='user.userprofile', read_only=True)
+    user_business = UserBusinessSerializer  (source='user.userbusiness', read_only=True)
     class Meta:
         model = Post
         fields = [
             "id", "title", "content", "category", "photo",
-            "postal_code", "latitude", "longitude", "user",
-            "display_name", "profile_image"  
+            "postal_code", "latitude", "longitude","created_at","updated_at", "user", "user_business", "user_profile"  
         ]
-        read_only_fields = ("latitude", "longitude", "user", "display_name", "profile_image")
+        read_only_fields = ("latitude", "longitude", "user_business", "user_profile")
 
-    def get_display_name(self, obj):
-        business = getattr(obj.user, "userbusiness", None)
-        if business:
-            return business.display_name
-        return obj.user.username
-
-    def get_profile_image(self, obj):
-        user = getattr(obj.user, "user", None)
-        if user and user.avatar:
-            request = self.context.get("request")
-            if request:
-                return request.build_absolute_uri(user.avatar.url)  #
-            return user.avatar.url
-        return None
+   
