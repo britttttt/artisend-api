@@ -25,6 +25,7 @@ router.register(r'businessprofile', BusinessProfileViewSet, basename='businesspr
 router.register(r'posts', PostViewSet, basename='post')
 router.register(r'category', CategoryViewSet, basename='category')
 router.register(r'user', UserViewSet, basename='user')
+router.register(r'profile', UserViewSet, basename='profile')
 # Wire up our API using automatic URL routing.
 urlpatterns = [
     path("", include(router.urls)),

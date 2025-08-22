@@ -61,5 +61,12 @@
     "fields": {
       "label": "Writing"
     }
+  },
+  {
+    "model": "artisendapi.medium",
+    "pk": 10,
+    "fields": {
+      "label": "Goods Crafting"
+    }
   }
 ]
