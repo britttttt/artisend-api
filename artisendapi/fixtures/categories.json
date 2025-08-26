@@ -10,19 +10,26 @@
     "model": "artisendapi.category",
     "pk": 2,
     "fields": {
-      "label": "Feedback Request"
+      "label": "WIP"
     }
   },
   {
     "model": "artisendapi.category",
     "pk": 3,
     "fields": {
-      "label": "Event"
+      "label": "Feedback Request"
     }
   },
   {
     "model": "artisendapi.category",
     "pk": 4,
+    "fields": {
+      "label": "Event"
+    }
+  },
+  {
+    "model": "artisendapi.category",
+    "pk": 5,
     "fields": {
       "label": "Tutorial"
     }

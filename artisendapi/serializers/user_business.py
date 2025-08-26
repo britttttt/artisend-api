@@ -5,8 +5,8 @@ from .user_medium import UserMediumSerializer
 from .user_skill import UserSkillSerializer
 
 class UserBusinessSerializer(serializers.ModelSerializer):
-    mediums = UserMediumSerializer(many=True, read_only=True)
-    skills = UserSkillSerializer(many=True, read_only=True)
+    mediums = UserMediumSerializer(many=True, read_only=True, source='user_mediums')
+    skills = UserSkillSerializer(many=True, read_only=True, source='user_skills')
 
     class Meta:
         model = UserBusiness

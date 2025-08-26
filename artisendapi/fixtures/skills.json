@@ -33,6 +33,8 @@
   {"model": "artisendapi.skill", "pk": 32, "fields": {"medium": 8, "label": "Song-Writing"}},
   {"model": "artisendapi.skill", "pk": 33, "fields": {"medium": 8, "label": "Poetry"}},
   {"model": "artisendapi.skill", "pk": 34, "fields": {"medium": 8, "label": "Long-Form"}},
-  {"model": "artisendapi.skill", "pk": 35, "fields": {"medium": 8, "label": "Short-Form"}}
-
+  {"model": "artisendapi.skill", "pk": 35, "fields": {"medium": 8, "label": "Short-Form"}},
+{"model": "artisendapi.skill", "pk": 36, "fields": {"medium": 2, "label": "Blacksmithing"}},
+{"model": "artisendapi.skill", "pk": 37, "fields": {"medium": 10, "label": "Candle-making"}},
+{"model": "artisendapi.skill", "pk": 38, "fields": {"medium": 10, "label": "soap-making"}}
 ]
